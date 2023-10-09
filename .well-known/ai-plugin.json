@@ -5,14 +5,21 @@
     "description_for_human": "Unofficial plugin for interacting with MyAnimeList. Edit your profile, find new recommendations, etc.",
     "description_for_model": "Plugin for interacting with MyAnimeList.net",
     "auth": {
-      "type": "none"
+      "type": "oauth",
+      "client_url": "https://chatgpt-mal-plugin.herokuapp.com/oauth",
+      "scope": "",
+      "authorization_url": "https://chatgpt-mal-plugin.herokuapp.com/auth/oauth_exchange",
+      "authorization_content_type": "application/json",
+      "verification_tokens": {
+          "openai": "REPLACE"
+      }
     },
     "api": {
       "type": "openapi",
-      "url": "http://localhost:5003/openapi.yaml"
+      "url": "https://chatgpt-mal-plugin.herokuapp.com/openapi.yaml"
     },
-    "logo_url": "http://localhost:5003/logo.png",
+    "logo_url": "https://chatgpt-mal-plugin.herokuapp.com/logo.png",
     "contact_email": "kcoopermiller9@gmail.com",
-    "legal_info_url": "http://localhost:5003/legal"
+    "legal_info_url": "https://chatgpt-mal-plugin.herokuapp.com/legal"
   }
   
