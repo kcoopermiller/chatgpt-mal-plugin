@@ -87,14 +87,17 @@ async def oauth_exchange():
     request = await quart.request.get_json(force=True)
     print("Request from ChatGPT: ", request)
 
-    # Assemble the URL to send to MAL (added code_verifier to the request)
-    url = f"{AUTH_URL}?client_id={request['client_id']}&client_secret={request['client_secret']}&grant_type=authorization_code&code={request['code']}&code_verifier={MAL_CODE}"
-
-    print("URL: ", url)
+    data = {
+        'client_id': request['client_id'],
+        'client_secret': request['client_secret'],
+        'grant_type': request['grant_type'],
+        'code': request['code'],
+        'code_verifier': MAL_CODE,
+    }
 
     # Send request to the external URL using httpx
     async with httpx.AsyncClient() as client:
-        response = await client.post(url)
+        response = await client.post(AUTH_URL, json=data)
     
     print("Response from MAL: ", response.json())
 
