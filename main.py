@@ -84,20 +84,15 @@ async def oauth():
 
 @app.post("/auth/oauth_exchange")
 async def oauth_exchange():
-    query_string = request.query_string.decode('utf-8')
-    parts = query_string.split('&')
-    kvps = {}
-    for part in parts:
-        k, v = part.split('=')
-        v = v.replace("%2F", "/").replace("%3A", ":")
-        kvps[k] = v
-    print("OAuth key value pairs from the ChatGPT Request 2: ", kvps)
+    request = await quart.request.get_json(force=True)
+    print("Request from ChatGPT: ", request)
 
-    url = f"{AUTH_URL}?grant_type=authorization_code&client_id={kvps['client_id']}&client_secret={kvps['client_secret']}&code={kvps['code']}&code_challenge={MAL_CODE}"
+    # Assemble the URL to send to MAL (added code_verifier to the request)
+    url = f"{AUTH_URL}?grant_type={request['grant_type']}&client_id={request['client_id']}&client_secret={request['client_secret']}&code={request['code']}&code_verifier={MAL_CODE}"
 
     # Send request to the external URL using httpx
     async with httpx.AsyncClient() as client:
-        response = await client.post(url, json=request)
+        response = await client.post(url)
     
     print("Response from MAL: ", response.json())
 
