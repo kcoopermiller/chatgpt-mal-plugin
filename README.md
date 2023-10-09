@@ -1,3 +1,5 @@
+![alt text](https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/mal-logo.png?raw=true) ✖️ ![alt text](https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/openai-logo.png?raw=true)
+
 # ChatGPT MyAnimeList Plugin
 
 This plugin allows you to interact with your MyAnimeList account through ChatGPT. It allows you to add anime to your list, search for anime, get recommendations, and more.

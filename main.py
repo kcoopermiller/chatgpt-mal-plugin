@@ -44,9 +44,9 @@ async def delete_todo(username):
     return quart.Response(response='OK', status=200)
 
 
-@app.get("/logo.png")
+@app.get("/img/mal-logo.png")
 async def plugin_logo():
-    filename = 'logo.png'
+    filename = 'img/mal-logo.png'
     return await quart.send_file(filename, mimetype='image/png')
 
 
