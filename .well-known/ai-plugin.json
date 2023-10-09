@@ -6,9 +6,9 @@
     "description_for_model": "Plugin for interacting with MyAnimeList.net",
     "auth": {
       "type": "oauth",
-      "client_url": "https://chatgpt-mal-plugin.herokuapp.com/oauth",
+      "client_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/oauth",
       "scope": "",
-      "authorization_url": "https://chatgpt-mal-plugin.herokuapp.com/auth/oauth_exchange",
+      "authorization_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/auth/oauth_exchange",
       "authorization_content_type": "application/json",
       "verification_tokens": {
           "openai": "REPLACE"
@@ -16,10 +16,10 @@
     },
     "api": {
       "type": "openapi",
-      "url": "https://chatgpt-mal-plugin.herokuapp.com/openapi.yaml"
+      "url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/openapi.yaml"
     },
-    "logo_url": "https://chatgpt-mal-plugin.herokuapp.com/logo.png",
+    "logo_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/logo.png",
     "contact_email": "kcoopermiller9@gmail.com",
-    "legal_info_url": "https://chatgpt-mal-plugin.herokuapp.com/legal"
+    "legal_info_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/legal"
   }
   

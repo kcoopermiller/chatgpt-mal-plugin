@@ -4,7 +4,7 @@ info:
   description: Plugin for interacting with MyAnimeList; retrieve info about specific anime/manga, access general or seasonal rankings, read forum topics, get or update info about an authenticated user, and more.
   version: "v1"
 servers:
-  - url: https://chatgpt-mal-plugin.herokuapp.com
+  - url: https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com
 paths:
   /todos/{username}:
     get:
