@@ -11,7 +11,7 @@
       "authorization_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/auth/oauth_exchange",
       "authorization_content_type": "application/json",
       "verification_tokens": {
-          "openai": "e28b999cdb074e438c7298c689a5a12f"
+          "openai": "e44af9e46ed746768fd8200f254cc3d7"
       }
     },
     "api": {
