@@ -75,7 +75,7 @@ async def oauth():
         v = v.replace("%2F", "/").replace("%3A", ":")
         kvps[k] = v
     print("OAuth key value pairs from the ChatGPT Request: ", kvps)
-    url = f"{CLIENT_URL}?response_type=code&client_id={kvps['client_id']}&code_challenge={MAL_CODE}"
+    url = f"{CLIENT_URL}?response_type=code&client_id={kvps['client_id']}&state={kvps['state']}&code_challenge={MAL_CODE}"
     print("URL: ", url)
     return quart.Response(
         f'<a href="{url}">Click to authorize</a>'
