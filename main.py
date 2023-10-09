@@ -88,7 +88,7 @@ async def oauth_exchange():
     print("Request from ChatGPT: ", request)
 
     # Assemble the URL to send to MAL (added code_verifier to the request)
-    url = f"{AUTH_URL}?grant_type=authorization_code&client_id={request['client_id']}&client_secret={request['client_secret']}&code={request['code']}&code_verifier={MAL_CODE}"
+    url = f"{AUTH_URL}?client_id={request['client_id']}&client_secret={request['client_secret']}&grant_type=authorization_code&code={request['code']}&code_verifier={MAL_CODE}"
 
     print("URL: ", url)
 
