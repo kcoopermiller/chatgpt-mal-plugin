@@ -83,31 +83,31 @@ async def oauth():
     )
 
 
-@app.post("/auth/oauth_exchange")
-async def oauth_exchange():
-    request = await quart.request.get_json(force=True)
-    print(f"oauth_exchange {request=}")
+# @app.post("/auth/oauth_exchange")
+# async def oauth_exchange():
+#     request = await quart.request.get_json(force=True)
+#     print(f"oauth_exchange {request=}")
 
-    if request["client_id"] != OPENAI_CLIENT_ID:
-        raise RuntimeError("bad client ID")
-    if request["client_secret"] != OPENAI_CLIENT_SECRET:
-        raise RuntimeError("bad client secret")
-    if request["code"] != OPENAI_CODE:
-        raise RuntimeError("bad code")
+#     if request["client_id"] != OPENAI_CLIENT_ID:
+#         raise RuntimeError("bad client ID")
+#     if request["client_secret"] != OPENAI_CLIENT_SECRET:
+#         raise RuntimeError("bad client secret")
+#     if request["code"] != OPENAI_CODE:
+#         raise RuntimeError("bad code")
 
-    # Send request to the external URL using httpx
-    async with httpx.AsyncClient() as client:
-        response = await client.post(AUTH_URL, json=request)
+#     # Send request to the external URL using httpx
+#     async with httpx.AsyncClient() as client:
+#         response = await client.post(AUTH_URL, json=request)
 
-    response = response.json()
+#     response = response.json()
 
-    print("response: ", response)
+#     print("response: ", response)
 
-    return {
-        "access_token": OPENAI_TOKEN, # not the right token???
-        "token_type": response["token_type"],
-        "refresh_token": response["refresh_token"],
-    }
+#     return {
+#         "access_token": OPENAI_TOKEN, # not the right token???
+#         "token_type": response["token_type"],
+#         "refresh_token": response["refresh_token"],
+#     }
 
 
 def main():
