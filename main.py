@@ -1,7 +1,7 @@
 import json
 import quart
 import quart_cors
-from quart import request
+from quart import request, jsonify
 import httpx
 import os
 from dotenv import load_dotenv
@@ -16,8 +16,7 @@ CLIENT_URL = 'https://myanimelist.net/v1/oauth2/authorize'
 AUTH_URL = 'https://myanimelist.net/v1/oauth2/token'
 OPENAI_CLIENT_ID = os.getenv("OPENAI_CLIENT_ID")
 OPENAI_CLIENT_SECRET = os.getenv("OPENAI_CLIENT_SECRET")
-OPENAI_TOKEN = os.getenv("OPENAI_TOKEN")
-OPENAI_CODE = os.urandom(43).hex()
+MAL_CODE = os.urandom(43).hex()
 
 
 @app.post("/todos/<string:username>")
@@ -76,38 +75,33 @@ async def oauth():
         v = v.replace("%2F", "/").replace("%3A", ":")
         kvps[k] = v
     print("OAuth key value pairs from the ChatGPT Request: ", kvps)
-    url = f"https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id={kvps['client_id']}&code_challenge={OPENAI_CODE}"
+    url = f"{CLIENT_URL}?response_type=code&client_id={kvps['client_id']}&code_challenge={MAL_CODE}"
     print("URL: ", url)
     return quart.Response(
         f'<a href="{url}">Click to authorize</a>'
     )
 
 
-# @app.post("/auth/oauth_exchange")
-# async def oauth_exchange():
-#     request = await quart.request.get_json(force=True)
-#     print(f"oauth_exchange {request=}")
+@app.post("/auth/oauth_exchange")
+async def oauth_exchange():
+    query_string = request.query_string.decode('utf-8')
+    parts = query_string.split('&')
+    kvps = {}
+    for part in parts:
+        k, v = part.split('=')
+        v = v.replace("%2F", "/").replace("%3A", ":")
+        kvps[k] = v
+    print("OAuth key value pairs from the ChatGPT Request 2: ", kvps)
 
-#     if request["client_id"] != OPENAI_CLIENT_ID:
-#         raise RuntimeError("bad client ID")
-#     if request["client_secret"] != OPENAI_CLIENT_SECRET:
-#         raise RuntimeError("bad client secret")
-#     if request["code"] != OPENAI_CODE:
-#         raise RuntimeError("bad code")
+    url = f"{AUTH_URL}?grant_type=authorization_code&client_id={kvps['client_id']}&client_secret={kvps['client_secret']}&code={kvps['code']}&code_challenge={MAL_CODE}"
 
-#     # Send request to the external URL using httpx
-#     async with httpx.AsyncClient() as client:
-#         response = await client.post(AUTH_URL, json=request)
+    # Send request to the external URL using httpx
+    async with httpx.AsyncClient() as client:
+        response = await client.post(url, json=request)
+    
+    print("Response from MAL: ", response.json())
 
-#     response = response.json()
-
-#     print("response: ", response)
-
-#     return {
-#         "access_token": OPENAI_TOKEN, # not the right token???
-#         "token_type": response["token_type"],
-#         "refresh_token": response["refresh_token"],
-#     }
+    return jsonify(response.json())
 
 
 def main():
