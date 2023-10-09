@@ -101,7 +101,7 @@ async def oauth_exchange():
 
     response = response.json()
 
-    print(response)
+    print("response: ", response)
 
     return {
         "access_token": OPENAI_TOKEN, # not the right token???
