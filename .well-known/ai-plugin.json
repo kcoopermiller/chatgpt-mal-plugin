@@ -8,7 +8,7 @@
       "type": "oauth",
       "client_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/oauth",
       "scope": "",
-      "authorization_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com//auth/oauth_exchange",
+      "authorization_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/auth/oauth_exchange",
       "authorization_content_type": "application/json",
       "verification_tokens": {
           "openai": "2abf59319a1847ec87cab149219e7de9"
