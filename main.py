@@ -16,6 +16,7 @@ CLIENT_URL = 'https://myanimelist.net/v1/oauth2/authorize'
 AUTH_URL = 'https://myanimelist.net/v1/oauth2/token'
 OPENAI_CLIENT_ID = os.getenv("OPENAI_CLIENT_ID")
 OPENAI_CLIENT_SECRET = os.getenv("OPENAI_CLIENT_SECRET")
+OPENAI_TOKEN = os.getenv("OPENAI_TOKEN")
 OPENAI_CODE = os.urandom(43).hex()
 
 
@@ -103,7 +104,7 @@ async def oauth_exchange():
     print(response)
 
     return {
-        "access_token": "idk",
+        "access_token": OPENAI_TOKEN, # not the right token???
         "token_type": response["token_type"],
         "refresh_token": response["refresh_token"],
     }
