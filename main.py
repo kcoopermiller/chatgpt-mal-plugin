@@ -97,7 +97,7 @@ async def oauth_exchange():
 
     # Send request to the external URL using httpx
     async with httpx.AsyncClient() as client:
-        response = await client.post(AUTH_URL, json=data)
+        response = await client.post(AUTH_URL, data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
     
     print("Response from MAL: ", response.json())
 
