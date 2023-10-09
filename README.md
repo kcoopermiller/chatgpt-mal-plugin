@@ -1,4 +1,4 @@
-![alt text](https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/mal-logo.png?raw=true) ✖️ ![alt text](https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/openai-logo.png?raw=true)
+# <img src="https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/mal-logo.png" alt="mal logo" width="100" /> ✖️ <img src="https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/openai-logo.png" alt="openai logo" width="100" />
 
 # ChatGPT MyAnimeList Plugin
 
