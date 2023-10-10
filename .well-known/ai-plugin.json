@@ -18,7 +18,7 @@
       "type": "openapi",
       "url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/openapi.yaml"
     },
-    "logo_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/img/mal-logo.png",
+    "logo_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/static/img/mal-logo.png",
     "contact_email": "kcoopermiller9@gmail.com",
     "legal_info_url": "https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com/legal"
   }
