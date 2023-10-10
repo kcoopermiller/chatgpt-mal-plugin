@@ -6,88 +6,66 @@ info:
 servers:
   - url: https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com
 paths:
-  /todos/{username}:
+  /anime/suggestions/{limit}:
     get:
-      operationId: getTodos
-      summary: Get the list of todos
+      operationId: getAnimeSuggestions
+      summary: Get anime suggestions
       parameters:
         - in: path
-          name: username
+          name: limit
           schema:
-            type: string
-          required: true
-          description: The name of the user.
+            type: integer
+          required: false
+          description: The number of suggestions to return.
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/getTodosResponse"
-    post:
-      operationId: addTodo
-      summary: Add a todo to the list
+                $ref: "#/components/schemas/getAnimeSuggestionsResponse"
+  /anime/season/{year}/{season}/{limit}:
+    get:
+      operationId: getAnimeSeason
+      summary: Get anime from a specific season
       parameters:
         - in: path
-          name: username
+          name: year
+          schema:
+            type: integer
+          required: true
+          description: The year of the season.
+        - in: path
+          name: season
           schema:
             type: string
           required: true
-          description: The name of the user.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/addTodoRequest"
-      responses:
-        "200":
-          description: OK
-    delete:
-      operationId: deleteTodo
-      summary: Delete a todo from the list
-      parameters:
+          description: The season.
         - in: path
-          name: username
+          name: limit
           schema:
-            type: string
-          required: true
-          description: The name of the user.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/deleteTodoRequest"
+            type: integer
+          required: false
+          description: The number of anime to return.
       responses:
         "200":
           description: OK
 
 components:
   schemas:
-    getTodosResponse:
+    getAnimeSuggestionsResponse:
       type: object
       properties:
-        todos:
+        suggestions:
           type: array
           items:
             type: string
-          description: The list of todos.
-    addTodoRequest:
+          description: The list of suggestions.
+    getAnimeSeasonResponse:
       type: object
-      required:
-        - todo
       properties:
-        todo:
-          type: string
-          description: The todo to add to the list.
-          required: true
-    deleteTodoRequest:
-      type: object
-      required:
-        - todo_idx
-      properties:
-        todo_idx:
-          type: integer
-          description: The index of the todo to delete.
-          required: true
+        anime:
+          type: array
+          items:
+            type: string
+          description: The list of seasonal anime.
