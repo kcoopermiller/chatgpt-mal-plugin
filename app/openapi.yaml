@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com
 paths:
-  /anime/{limit}:
+  /anime/suggestions/{limit}:
     get:
       operationId: getAnimeSuggestions
       summary: Get anime suggestions
@@ -24,7 +24,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/getAnimeSuggestionsResponse"
-  /anime/{year}/{season}/{limit}:
+  /anime/season/{year}/{season}/{limit}:
     get:
       operationId: getAnimeSeason
       summary: Get anime from a specific season
@@ -41,6 +41,71 @@ paths:
             type: string
           required: true
           description: The season.
+        - in: path
+          name: limit
+          schema:
+            type: integer
+          required: false
+          description: The number of anime to return.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getAnimeSeasonResponse"
+  /anime/ranking/{ranking_type}/{limit}:
+    get:
+      operationId: getAnimeRanking
+      summary: Get anime from a specific ranking
+      parameters:
+        - in: path
+          name: ranking_type
+          schema:
+            type: string
+            enum:
+              - all
+              - airing
+              - upcoming
+              - tv
+              - ova
+              - movie
+              - special
+              - bypopularity
+              - favorite
+          required: false
+          description: The ranking type.
+        - in: path
+          name: limit
+          schema:
+            type: integer
+          required: false
+          description: The number of anime to return.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getAnimeSeasonResponse"
+  /anime/list/{status}/{limit}:
+    get:
+      operationId: getAnimeList
+      summary: Get anime from a specific user's list
+      parameters:
+        - in: path
+          name: status
+          schema:
+            type: string
+            enum:
+              - all
+              - watching
+              - completed
+              - on_hold
+              - dropped
+              - plan_to_watch
+          required: false
+          description: The status of the anime.
         - in: path
           name: limit
           schema:
@@ -73,3 +138,19 @@ components:
           items:
             type: string
           description: The list of seasonal anime.
+    getAnimeRankingResponse:
+      type: object
+      properties:
+        anime:
+          type: array
+          items:
+            type: string
+          description: The list of ranked anime.
+    getAnimeListResponse:
+      type: object
+      properties:
+        anime:
+          type: array
+          items:
+            type: string
+          description: The list of anime in the user's list.
