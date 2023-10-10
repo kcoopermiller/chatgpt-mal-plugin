@@ -1,4 +1,4 @@
-from quart import Blueprint, request, jsonify, Response
+from quart import Blueprint, request, jsonify, Response, g
 import httpx
 import os
 
@@ -39,5 +39,9 @@ async def oauth_exchange():
     # Send request to the external URL using httpx
     async with httpx.AsyncClient() as client:
         response = await client.post(AUTH_URL, data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+
+    # Update the global access token so that it can be used in other endpoints
+    response = response.json()
+    g.access_token = response['access_token']
     
-    return jsonify(response.json())
+    return jsonify(response)
