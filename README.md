@@ -1,4 +1,4 @@
-# <img src="https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/mal-logo.png" alt="mal logo" width="100" /> ✖️ <img src="https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/openai-logo.png" alt="openai logo" width="100" />
+<img src="https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/mal-logo.png" alt="mal logo" width="100" /> ✖️ <img src="https://github.com/kcoopermiller/chatgpt-mal-plugin/blob/main/img/openai-logo.png" alt="openai logo" width="100" />
 
 # ChatGPT MyAnimeList Plugin
 
@@ -9,7 +9,7 @@ This plugin allows you to interact with your MyAnimeList account through ChatGPT
 1. Follow the instructions [here](https://myanimelist.net/forum/?topicid=1973141) to create a MyAnimeList API ID.
    You will receive a Client ID and a Client Secret. Save these for later.
 
-2. Install the [Heroku](https://devcenter.heroku.com/articles/getting-started-with-python#set-up), the Heroku CLI and login.
+2. Install [Heroku](https://devcenter.heroku.com/articles/getting-started-with-python#set-up), the Heroku CLI and login.
 
 3. Clone the repository and navigate to the directory.
 
@@ -38,7 +38,7 @@ git push heroku main
 heroku ps:scale web=1
 ```
 
-7. Once the app is deployed, navigate to the [ChatGPT](https://chat.openai.com/) Plugin store (if you don't have access, [join the waitlist](https://openai.com/waitlist/plugins))
+7. Once the app is deployed, navigate to the [ChatGPT](https://chat.openai.com/) Plugin store
 8. Select "Develop your own plugin"
 9. Enter the domain where your plugin is hosted (ex: `https://my-plugin.herokuapp.com`)
 10. Enter the OAuth client ID and client secret you received from MyAnimeList.
