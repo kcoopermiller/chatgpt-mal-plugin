@@ -2,7 +2,7 @@ import json
 from quart import Blueprint, Response, g
 import httpx
 
-bp = Blueprint('todo', __name__)
+bp = Blueprint('mal', __name__)
 
 URL = 'https://api.myanimelist.net/v2'
 
