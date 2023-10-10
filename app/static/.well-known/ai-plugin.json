@@ -1,7 +1,7 @@
 {
     "schema_version": "v1",
     "name_for_human": "MyAnimeList (unofficial)",
-    "name_for_model": "mal",
+    "name_for_model": "MyAnimeList.net",
     "description_for_human": "Unofficial plugin for interacting with MyAnimeList. Edit your profile, find new recommendations, etc.",
     "description_for_model": "Plugin for interacting with MyAnimeList.net",
     "auth": {
