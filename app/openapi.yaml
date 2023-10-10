@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://chatgpt-mal-plugin-2ce3020b3a58.herokuapp.com
 paths:
-  /anime/suggestions/{limit}:
+  /anime/{limit}:
     get:
       operationId: getAnimeSuggestions
       summary: Get anime suggestions
@@ -24,7 +24,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/getAnimeSuggestionsResponse"
-  /anime/season/{year}/{season}/{limit}:
+  /anime/{year}/{season}/{limit}:
     get:
       operationId: getAnimeSeason
       summary: Get anime from a specific season
@@ -50,6 +50,10 @@ paths:
       responses:
         "200":
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getAnimeSeasonResponse"
 
 components:
   schemas:

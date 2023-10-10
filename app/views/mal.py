@@ -8,7 +8,7 @@ URL = 'https://api.myanimelist.net/v2'
 
 # Get suggested anime for the authorized user
 # If the user is newcomer, this endpoint returns an empty list.
-@bp.get("/anime/suggestions/<int:limit>")
+@bp.get("/anime/<int:limit>")
 async def suggest_anime(limit=10):
     print('headers')
     print(g.access_token)
@@ -18,8 +18,8 @@ async def suggest_anime(limit=10):
     return Response(response=json.dumps(response.json()), status=200)
 
 # Get seasonal anime
-@bp.get("/anime/season/<int:year>/<string:season>/<int:limit>")
-async def anime_season(year, season, limit=10):
+@bp.get("/anime/<int:year>/<string:season>/<int:limit>")
+async def get_seasonal_anime(year, season, limit=10):
     async with httpx.AsyncClient() as client:
         response = await client.get(f'{URL}/anime/season/{year}/{season}?limit={limit}', headers={'Authorization': f'Bearer {g.access_token}'})
     
